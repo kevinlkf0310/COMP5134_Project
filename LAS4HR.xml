@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project LAS4HR">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="C:/Users/Kevin/Desktop/PolyU/2015_2 COMP5134 Information System Development with Object-oriented Methods/Project/LAS"/>
+    <property name="dir.jarfile" value="${dir.buildfile}"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/LAS4HR.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="LAS4HR.Main.Execute"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="${dir.jarfile}/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.jarfile}/miglayout15-swing.jar"/>
+        </jar>
+    </target>
+</project>
