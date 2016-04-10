@@ -1,6 +1,10 @@
 package LAS4HR.GUI;
 
  
+import LAS4HR.Application.*;
+import LAS4HR.Person.Director;
+import LAS4HR.Person.Staff;
+import LAS4HR.Person.Supervisor;
 import LAS4HR.Utilities.*; 
 
 import java.awt.event.*;
@@ -10,11 +14,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JToolBar;
+
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
  
 
@@ -49,7 +50,7 @@ public class MainFrame extends JFrame{
 	private final JMenuItem miExit = new JMenuItem("Exit");
 	//---------------------------------------------------------------------
 	
-	public MainFrame(){	
+	public MainFrame() throws java.text.ParseException{	
 	    initUI();
 	    
 	    miLogin.setEnabled(true);
@@ -57,6 +58,69 @@ public class MainFrame extends JFrame{
 	    
 	    SetFunctionEnable(false, false);
 	    //SetFunctionEnable(true, true);
+	    
+	    
+	    if (JOptionPane.showConfirmDialog(null, "Do you want to create dummy entry for [Leave Application Request] ?", "Question",
+		           JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {					 
+	    	
+	        //Employee(                       ID,    LastName, FirstName, Password, Supervisor)
+	  	    Staff LoEric = new Director      ("001", "Lo", "Eric", "123");		
+	  		
+	  	    Staff HuangEnyan = new Supervisor("002", "Huang", "Enyan", "123", LoEric);
+	  	    Staff LeungKevin = new Supervisor("003", "Leung", "Kevin", "123", LoEric);
+	  	    Staff LeePeter = new Supervisor  ("004", "Lee", "Peter", "123", HuangEnyan);
+	  	    Staff WongMary = new Supervisor  ("005", "Wong", "Mary", "123", LeePeter);
+	  		
+	  	    Staff ChanTaiMan = new Staff     ("006", "Chan", "Tai Man", "123",WongMary);
+	  	
+	  	    //-----------------------------------------------------------------------
+	  	    // dummy record for testing and demo
+	  	    //gDateFormat = new SimpleDateFormat("yyyy-MM-dd");		 
+	  	    LeaveRequest request = null;
+	  		
+	  	    //-----------------------------------------------------------------------
+	  	    // Request #1
+	  	    try {
+	  		   request = LeungKevin.applyLeaveRequest(GlobalVar.gDateFormat.parse("2016-04-01"), GlobalVar.gDateFormat.parse("2016-04-01"), "DUMMY 01");
+	  	    } catch (ParseException e) {
+	  		   // TODO Auto-generated catch block
+	  		   e.printStackTrace();
+	  	    }
+	  		
+	  	    request.setRequestor(LeungKevin);	
+	  	    GlobalVar.gLeaveRequestDB.add(request);
+	   	    request.getRequestHandler().processRequest();
+	  	    //-----------------------------------------------------------------------
+	  		
+	  	   //-----------------------------------------------------------------------
+	  	   // Request #2
+	  	   try {
+	  		  	  request = LeungKevin.applyLeaveRequest(GlobalVar.gDateFormat.parse("2016-04-12"), GlobalVar.gDateFormat.parse("2016-04-12"), "DUMMY 02");
+	  	   } catch (ParseException e) {
+	  	      // TODO Auto-generated catch block
+	  			 e.printStackTrace();
+	  	   }
+	  				
+	  	   request.setRequestor(LeungKevin);	
+	  	   GlobalVar.gLeaveRequestDB.add(request);
+	  	   request.getRequestHandler().processRequest();
+	  	   //-----------------------------------------------------------------------
+	  		
+	  	   //-----------------------------------------------------------------------
+	  	   // Request #3
+	  	   try {
+	  		  request = ChanTaiMan.applyLeaveRequest(GlobalVar.gDateFormat.parse("2016-05-12"), GlobalVar.gDateFormat.parse("2016-05-17"), "DUMMY 03");
+	  	   } catch (ParseException e) {
+	  	   // TODO Auto-generated catch block
+	  		  	e.printStackTrace();
+	  	   }
+	  						
+	  	   request.setRequestor(ChanTaiMan);	
+	  	   GlobalVar.gLeaveRequestDB.add(request);
+	  	   request.getRequestHandler().processRequest();
+	  	  //-----------------------------------------------------------------------
+	    }
+	  		
 	}	
 	   
 	private void SetFunctionEnable(boolean blnUser, boolean blnApplication){

@@ -66,7 +66,18 @@ public class LeaveReqDlg extends JFrame{
 	 private int selectedRow ;
 	 private LeaveRequest selectedRequest ;
 	 
-	   
+	 
+	 /*
+	 private void RefreshRequestDataView(){
+	 
+		 myLeaveReqView.fireTableDataChanged();
+		 myLeaveProcessingView.fireTableDataChanged();
+		 myAllLeaveReqView.fireTableDataChanged();
+		 
+		 GlobalFuns.Debug("LeaveReqDlg.RefreshRequestDataView");
+	 }
+	 */
+	 
 	 public LeaveReqDlg(Employee staff){
 			btnEndorse.setEnabled(false);
 			btnDecline.setEnabled(false);
@@ -180,10 +191,27 @@ public class LeaveReqDlg extends JFrame{
 			    	        }
 			    	        
 			    	        selectedRequest = myLeaveProcessingView.getRequestByAppID(Integer.parseInt(strID));
+			    	        GlobalFuns.Debug("LeaveReqDlg: AppID --> " + strID );
 			    	    }
 			       }
 			      );
 			 
+			 
+			 /*
+			 	TimerTask timerTask = new TimerTask() {
+
+		            @Override
+		            public void run() {		                
+		                RefreshRequestDataView();
+		            }
+		        };
+
+		        Timer timer = new Timer("refreshDataViewTimer");//create a new Timer
+
+		        timer.scheduleAtFixedRate(timerTask, 30, 3000);//this line starts the timer at the same time its executed
+			  */
+			 
+		        
 	 } 
 	  
 	 
@@ -214,11 +242,12 @@ public class LeaveReqDlg extends JFrame{
 						           JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {					 
 				    	  fromStaff.endorseLeaveRequest(selectedRequest);	
 				    	  
-					 	  GlobalFuns.Debug("ID: " + selectedRequest.getAppID() + " --> " + selectedRequest.getPerformer().getFullName());
+					  GlobalFuns.Debug("ID: " + selectedRequest.getAppID() + " --> " + selectedRequest.getPerformer().getFullName());
+					  GlobalFuns.Debug("ID:  App ID --> " + selectedRequest.getRequestHandler().getRequest().getAppID());
 				   }
 				 }
 				 else{
-					 GlobalFuns.ShowMessageDialog("Please select the leave request before [ENDORSE].", JOptionPane.ERROR_MESSAGE);
+					 GlobalFuns.ShowMessageDialog("Please select the leave request before [" + endorseCaption +"].", JOptionPane.ERROR_MESSAGE);
 				 }
 			 }
 		 });   

@@ -3,7 +3,6 @@ package LAS4HR.Handler;
 import LAS4HR.Application.*; 
 import LAS4HR.Enum.*;
 import LAS4HR.Person.*;
-import LAS4HR.Utilities.GlobalFuns;
 
 import java.util.Observer; 
 import java.util.Observable;   
@@ -58,8 +57,8 @@ public abstract class RequestHandler extends Observable implements Observer {
     public void notifyObservers(Observable observable, LeaveRequest request) {  
          for (Observer ob : observers) {  
         	if (ob instanceof Employee){
-               GlobalFuns.Debug("notifyObservers --> observers --> " + ((Employee) ob).getID());
-        	   GlobalFuns.Debug("notifyObservers --> request.Performer --> " + request.getPerformer().getID());
+               //GlobalFuns.Debug("notifyObservers --> observers --> " + ((Employee) ob).getID());
+        	   //GlobalFuns.Debug("notifyObservers --> request.Performer --> " + request.getPerformer().getID());
         	           	   
         	   if (((Employee) ob).getID() ==  request.getPerformer().getID()) {
         		   ob.update(observable, request);

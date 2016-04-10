@@ -89,7 +89,7 @@ public class LeaveDtlDlg extends JDialog {
           dateMask.install(fDateFrom);
           dateMask.install(fDateTo);
            
-  		  txtReason.setText("Demo...");
+  		  txtReason.setText("");
   		
           {
           	buttonPane = new JPanel();

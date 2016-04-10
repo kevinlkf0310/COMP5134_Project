@@ -8,6 +8,7 @@ import LAS4HR.Utilities.*;
 
 import java.awt.EventQueue;
 import java.awt.Frame;
+import java.text.ParseException;
 
 import javax.swing.JFrame;
 
@@ -39,16 +40,18 @@ public class Execute {
 	
 	/**
 	 * Create the application.
+	 * @throws ParseException 
 	 */
-	public Execute() {
+	public Execute() throws ParseException {
 		initialize();
 	}
 
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws ParseException 
 	 */
-	private void initialize() {
+	private void initialize() throws ParseException {
 		//for testing only 		
 		Staff LoEric = new Director      ("001", "Lo", "Eric", "123");		
 		Staff LeungKevin = new Supervisor("003", "Leung", "Kevin", "123", LoEric);

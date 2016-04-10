@@ -137,10 +137,10 @@ abstract public class Employee implements Personnel, Observer{
 		else{
 			request.getRequestHandler().setActionPerform(ActionOnRequest.ENDORSE);
 		}
+
+		request.getRequestHandler().processRequest();
+		GlobalFuns.Debug("Employee.endorseLeaveRequest, App ID --> " + request.getRequestHandler().getRequest().getAppID());
 		
-		request.getRequestHandler().processRequest();     
-			
-	  
 		result = true;
 		return result;
 	}
@@ -161,28 +161,7 @@ abstract public class Employee implements Personnel, Observer{
 	public void update(Observable arg0, Object arg1) {
 			  
 	if (arg1 instanceof LeaveRequest){
-		  //LeaveRequest request =(LeaveRequest) arg1;
-		
-		  GlobalFuns.ShowMessageDialog(((LeaveRequest) arg1).getNotificationMsg(), JOptionPane.INFORMATION_MESSAGE);
-			 
-		  /*
-		  if ((request.getProcessingStage() == ProcessingStage.Approved) && (request.getRequestor().getID().toString().compareTo(this.getID().toString()) == 0)){
-				 GlobalFuns.ShowMessageDialog("Hello " + request.getRequestor().getFullName() + ", your request with ID [" + request.getAppID() + "] is [APPROVED].", JOptionPane.INFORMATION_MESSAGE);
-		  }
-		  
-		  if ((request.getProcessingStage() == ProcessingStage.Declined) && (request.getRequestor().getID().toString().compareTo(this.getID().toString()) == 0)){
-				 GlobalFuns.ShowMessageDialog("Sorry, " + request.getRequestor().getFullName() + ", your request with ID [" + request.getAppID() + "] is [DECLINED].", JOptionPane.INFORMATION_MESSAGE);
-		  }
-		  		  
-		  if (request.getProcessingStage() == ProcessingStage.Create){
-			 GlobalFuns.ShowMessageDialog("Hello " + request.getRequestor().getFullName() + ", your new request with ID [" + request.getAppID() + "] is being processing.", JOptionPane.INFORMATION_MESSAGE);
-		  }
-		 else if (request.getProcessingStage() != ProcessingStage.Approved){			 
-			//if (request.getPerformer().getID() == this.getID()){
-				GlobalFuns.ShowMessageDialog("Hello, " + request.getPerformer().getFullName() + ", you get request with ID [" + request.getAppID() + "] to processing.", JOptionPane.INFORMATION_MESSAGE);
-			//}
-		 }
-		 */
+	  GlobalFuns.ShowMessageDialog(((LeaveRequest) arg1).getNotificationMsg(), JOptionPane.INFORMATION_MESSAGE);
 	}
 	else{
 		   GlobalFuns.ShowMessageDialog("Unkown message from [" + arg1.toString() + "]", JOptionPane.INFORMATION_MESSAGE);

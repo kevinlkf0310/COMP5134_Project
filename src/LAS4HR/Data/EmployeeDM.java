@@ -1,12 +1,9 @@
 package LAS4HR.Data;
 
-
-import LAS4HR.Person.*;
-
-
+ 
+import LAS4HR.Person.*; 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
- 
 
 public class EmployeeDM extends AbstractTableModel{
 	

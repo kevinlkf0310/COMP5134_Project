@@ -9,27 +9,30 @@ import java.util.Observable;
 
 public class LeaveRequestHandler extends RequestHandler {
 	
-	protected  static LeaveRequest request = new LeaveRequest(); 
+	//protected  static LeaveRequest request = new LeaveRequest(); 
 
-	@SuppressWarnings("static-access")
+	protected  LeaveRequest request = new LeaveRequest();
+	
+	 
 	public LeaveRequestHandler(Employee performer, LeaveRequest request, ActionOnRequest actionPerform){
 		this.actionPerform = actionPerform;
 		this.performer = performer;
 		this.request = request;
 		this.getRequest().setPerformer(performer);
 	}
-
-
-	@SuppressWarnings("static-access")
+ 
+	 
 	public LeaveRequest getRequest(){
 		return this.request;
 	}
 	
+	/*
 	public LeaveRequestHandler(Employee performer, ActionOnRequest actionPerform){
 		this.actionPerform = actionPerform;
 		this.performer = performer;
 		this.getRequest().setPerformer(performer);
 	}
+	*/
 	
 	@Override
 	public void processRequest() {
@@ -61,7 +64,8 @@ public class LeaveRequestHandler extends RequestHandler {
 				
 				//---------------------------------------------------------------
 				// create next handler to process
-				nextHandler = new LeaveRequestHandler(nextPerformer, ActionOnRequest.NOTIFY) ;				
+				//nextHandler = new LeaveRequestHandler(nextPerformer, ActionOnRequest.NOTIFY) ;				
+				nextHandler = new LeaveRequestHandler(nextPerformer, request, ActionOnRequest.NOTIFY) ;
 				request.setPerformer(nextPerformer);
 				this.performer = nextPerformer;
 				request.setProcessingStage(ProcessingStage.WaitForPerformer);				

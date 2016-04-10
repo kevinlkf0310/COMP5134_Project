@@ -66,7 +66,7 @@ abstract class LeaveRequestViewModel extends AbstractTableModel implements Obser
     			return row.getReason();
     			
     		case 5:  
-    			return row.getPerformer().getFullName();    			
+    			return row.getPerformer().getID() + " -- " + row.getPerformer().getFullName();    			
     			
     		case 6:  
     			return row.getProcessingStage().toString();
