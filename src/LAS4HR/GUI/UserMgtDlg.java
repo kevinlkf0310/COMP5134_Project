@@ -75,7 +75,7 @@ public class UserMgtDlg  extends JFrame{
 				userInfoDlg = new UserInfoDlg();
 				userInfoDlg.setEditMode(EditMode.INSERT);
 					
-				userInfoDlg.setTitle("User Detail Information");
+				userInfoDlg.setTitle("New Staff Detail Information");
 				userInfoDlg.pack();
 				userInfoDlg.setLocationRelativeTo(null); 
 				userInfoDlg.setVisible(true);	    	     
@@ -149,7 +149,7 @@ public class UserMgtDlg  extends JFrame{
 			userInfoDlg = new UserInfoDlg();
 			userInfoDlg.setEditMode(EditMode.EDIT);
 						
-			userInfoDlg.setTitle("User Detail Information");
+			userInfoDlg.setTitle("Edit Staff Detail Information");
 			userInfoDlg.setEditStaff(selectedStaff);
 			userInfoDlg.setEditRow(selectedRow);
 			userInfoDlg.InitStaffInfo();

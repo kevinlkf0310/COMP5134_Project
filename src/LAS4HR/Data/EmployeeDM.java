@@ -91,7 +91,7 @@ public class EmployeeDM extends AbstractTableModel{
     // default data for demo
     public void initial(){
       	
-    	//Employee(String ID, String LastName, String FirstName, String Password, Employee Supervisor)
+    	//Employee(                       ID,    LastName, FirstName, Password, Supervisor)
 		Staff LoEric = new Director      ("001", "Lo", "Eric", "123");		
 		
 		Staff HuangEnyan = new Supervisor("002", "Huang", "Enyan", "123", LoEric);

@@ -34,7 +34,7 @@ public class MainFrame extends JFrame{
 	private final JToolBar toolBar = new JToolBar();
 	//private  ImageIcon icon = new ImageIcon("logout-icon.png");
 
-	private final JButton btnUserMaintenance = new JButton("User Maintenance");
+	private final JButton btnUserMaintenance = new JButton("Staff Maintenance");
 	private final JButton btnLeaveApplication = new JButton("Leave Application");
 	private final JButton btnStartService = new JButton("Show Service Console");
 	private final JButton btnStopService = new JButton("Hide Service Console");
@@ -99,7 +99,7 @@ public class MainFrame extends JFrame{
       			 miLogout.setEnabled(true);
       			
       			 SetFunctionEnable(true, true);
-      			setTitle("Apply Leave Request - " +  GlobalVar.gCurrentLogonUser.getFullName() + "(" + GlobalFuns.GetEmployeeType(GlobalVar.gCurrentLogonUser) + ")");
+      			setTitle("Leave Application System for HR Dept - " +  GlobalVar.gCurrentLogonUser.getFullName() + "(" + GlobalFuns.GetEmployeeType(GlobalVar.gCurrentLogonUser) + ")");
       		  
                		}
       		else{

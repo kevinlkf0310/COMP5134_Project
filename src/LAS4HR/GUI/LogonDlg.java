@@ -14,8 +14,8 @@ public class LogonDlg  extends JDialog{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private final JLabel lblUsername = new JLabel("Username");
-    private final JLabel lblPassword = new JLabel("Password");
+	private final JLabel lblUsername = new JLabel("Staff ID :");
+    private final JLabel lblPassword = new JLabel("Password :");
 
     private final JTextField txtUsername = new JTextField(20);
     private final JPasswordField txtPassword = new JPasswordField();
